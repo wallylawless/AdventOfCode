@@ -1,0 +1,11 @@
+{
+  "name": "adventofcode2019",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Wally Lawless",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "jest": "^24.9.0"
+  }
+}
