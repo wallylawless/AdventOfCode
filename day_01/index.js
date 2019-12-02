@@ -1,18 +1,20 @@
-const calculateFuel = require("./fuelcalculator");
+const {calculateFuel, calculateFuelforFuel} = require("./fuelcalculator");
 const fs = require("fs");
 
 fs.readFile("./input", 'utf8', (err, contents) => {
   if(!err) {
-    console.log(`Total fuel: ${calculateTotalFuel(contents)}`);
+    console.log(`Total fuel: ${JSON.stringify(calculateTotalFuel(contents))}`);
   }
 });
 
 function calculateTotalFuel(contents) {
   let totalFuel = 0;
-  console.log(contents);
+  let totalFuelforFuel = 0;
   contents = contents.split("\n");
   contents.forEach(massInput => {
-    totalFuel += calculateFuel(massInput);
+    let newFuel = calculateFuel(massInput);
+    totalFuelforFuel += calculateFuelforFuel(newFuel);
+    totalFuel += newFuel;
   });
-  return totalFuel;
+  return { value: totalFuel+totalFuelforFuel};
 }
